@@ -3,7 +3,9 @@
 
 
 void TicTacGrid ( );
-void PlayerMoves ( );
+void Player1Moves ( );
+void Player2Moves ( );
+bool IsWin ( );
 
 constexpr int TicTacCows{ 3 };
 constexpr int TicTacRols{ 3 };
@@ -17,3 +19,4 @@ std::string player2;
 
 int tokenX{};
 int tokenO{};
+bool Win { false };
