@@ -53,6 +53,10 @@ void Player1Moves ( )
 	{
 		loc[2][2] = 'X';
 	}
+	else
+	{
+		std::cout << player1 << " Invaild input!! ";
+	}
 }
 
 void Player2Moves ( )
@@ -95,21 +99,118 @@ void Player2Moves ( )
 	{
 		loc[2][2] = 'O';
 	}
+	else
+	{
+		std::cout << player2 << " Invaild input!! ";
+
+	}
 }
 
-bool IsWin ( )
+bool IsPlayer1Win ( )
 {
-	if (loc[0][0] && loc[0][1] && loc[0][2] == 'X' ||
-		loc[1][0] && loc[1][1] && loc[1][2] == 'X' ||
-		loc[2][0] && loc[2][1] && loc[2][2] == 'X' ||
-		loc[0][0] && loc[1][0] && loc[2][0] == 'X' ||
-		loc[0][1] && loc[1][1] && loc[2][1] == 'X' ||
-		loc[0][2] && loc[1][2] && loc[2][2] == 'X')
+	if (loc[0][0] == 'X' && loc[0][1] == 'X' && loc[0][2] == 'X')
+	{
+		win = true;
+	}
+	else if (loc[1][0] == 'X' && loc[1][1] == 'X' && loc[1][2] == 'X')
+	{
+		win = true;
+
+	}
+	else if (loc[2][0] == 'X' && loc[2][1] == 'X' && loc[2][2] == 'X')
+	{
+		win = true;
+
+	}
+	else if (loc[0][0] == 'X' && loc[1][0] == 'X' && loc[2][0] == 'X')
+	{
+		win = true;
+
+	}
+	else if (loc[0][1] == 'X' && loc[1][1] == 'X' && loc[2][1] == 'X')
+	{
+		win = true;
+
+	}
+	else if (loc[0][2] == 'X' && loc[1][2] == 'X' && loc[2][2] == 'X')
+	{
+		win = true;
+
+	}
+	else if (loc[0][0] == 'X' && loc[1][1] == 'X' && loc[2][2] == 'X')
+	{
+		win = true;
+
+	}
+	else if (loc[0][2] == 'X' && loc[1][1] == 'X' && loc[2][0] == 'X')
+	{
+		win = true;
+
+	}
+	 else
+	{
+		win = false;
+	}
+	 if (win)
 	{
 		std::cout << player1 << " has won!!\n";
-		return true;
+
 	}
-	return false;
+	return win;
+
+}
+
+bool IsPlayer2Win ( )
+{
+	if (loc[0][0] == 'O' && loc[0][1] == 'O' && loc[0][2] == 'O')
+	{
+		win = true;
+	}
+	else if (loc[1][0] == 'O' && loc[1][1] == 'O' && loc[1][2] == 'O')
+	{
+		win = true;
+
+	}
+	else if (loc[2][0] == 'O' && loc[2][1] == 'O' && loc[2][2] == 'O')
+	{
+		win = true;
+
+	}
+	else if (loc[0][0] == 'O' && loc[1][0] == 'O' && loc[2][0] == 'O')
+	{
+		win = true;
+
+	}
+	else if (loc[0][1] == 'O' && loc[1][1] == 'O' && loc[2][1] == 'O')
+	{
+		win = true;
+
+	}
+	else if (loc[0][2] == 'O' && loc[1][2] == 'O' && loc[2][2] == 'O')
+	{
+		win = true;
+
+	}
+	else if (loc[0][0] == 'O' && loc[1][1] == 'O' && loc[2][2] == 'O')
+	{
+		win = true;
+
+	}
+	else if (loc[0][2] == 'O' && loc[1][1] == 'O' && loc[2][0] == 'O')
+	{
+		win = true;
+
+	}
+	else
+	{
+		win = false;
+	}
+	if (win)
+	{
+		std::cout << player2 << " has won!!\n";
+
+	}
+	return win;
 }
 
 int main ( )
@@ -123,16 +224,17 @@ int main ( )
 
 	TicTacGrid ( );
 	
-	while (!IsWin())
+	while (true)
 	{
 
 	Player1Moves ( );
 	TicTacGrid ( );
-
-	IsWin ( );
+	IsPlayer1Win ( );
 
 	Player2Moves ( );
 	TicTacGrid ( );
+	IsPlayer2Win ( );
+
 	}
 	
 }
