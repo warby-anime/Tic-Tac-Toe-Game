@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <random>
 #include "main.h"
 
 void TicTacGrid()
@@ -11,6 +12,7 @@ void TicTacGrid()
 	std::cout << "___|___|___" << '\n';
 	std::cout << " " << loc[2][0] << " | " << loc[2][1] << " |" << loc[2][2] << " " << '\n';
 	std::cout << "   |   |  " << '\n';
+	
 }
 
 void Player1Moves ( )
@@ -58,7 +60,7 @@ void Player1Moves ( )
 		std::cout << player1 << " Invaild input!! \n";
 
 	}
-	
+
 	
 }
 
@@ -109,7 +111,7 @@ void Player2Moves ( )
 	}
 }
 
-bool IsPlayer1Win ( )
+void IsPlayer1Win ( )
 {
 	if (loc[0][0] == 'X' && loc[0][1] == 'X' && loc[0][2] == 'X')
 	{
@@ -150,20 +152,18 @@ bool IsPlayer1Win ( )
 		win = true;
 
 	}
-	 else
-	{
-		win = false;
-	}
+	
 	 if (win)
 	{
 		std::cout << player1 << " has won!!\n";
 
 	}
-	return win;
+	
+	
 
 }
 
-bool IsPlayer2Win ( )
+void IsPlayer2Win ( )
 {
 	if (loc[0][0] == 'O' && loc[0][1] == 'O' && loc[0][2] == 'O')
 	{
@@ -204,16 +204,15 @@ bool IsPlayer2Win ( )
 		win = true;
 
 	}
-	else
-	{
-		win = false;
-	}
+	
 	if (win)
 	{
 		std::cout << player2 << " has won!!\n";
 
 	}
-	return win;
+	
+	
+	
 }
 
 int main ( )
@@ -227,17 +226,23 @@ int main ( )
 
 	TicTacGrid ( );
 	
-	while (true)
+	while (!win)
 	{
+		++tiecount;
 
 	Player1Moves ( );
 	TicTacGrid ( );
 	IsPlayer1Win ( );
+		if (tiecount == 5)
+		{
+			std::cout << "Draw!!! \n";
+			tie = true;
+			break;
+		}
 
 	Player2Moves ( );
 	TicTacGrid ( );
 	IsPlayer2Win ( );
-
 	}
 	
 }

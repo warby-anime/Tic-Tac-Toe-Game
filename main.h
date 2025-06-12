@@ -5,12 +5,12 @@
 void TicTacGrid ( );
 void Player1Moves ( );
 void Player2Moves ( );
-bool IsPlayer1Win ( );
-bool IsPlayer2Win ( );
+void IsPlayer1Win ( );
+void IsPlayer2Win ( );
 
-constexpr int TicTacCows{ 3 };
-constexpr int TicTacRols{ 3 };
-char loc[TicTacCows][TicTacRols]
+static constexpr int Col = 3 ;
+static constexpr int Row = 3 ;
+char loc[3][3]
 { { '1' , '2' , '3'},
   { '4' , '5' , '6'},
   { '7' , '8' , '9'}
@@ -20,4 +20,6 @@ std::string player2;
 
 int tokenX{};
 int tokenO{};
+int tiecount = 0;
 bool win { false };
+bool tie { false };
